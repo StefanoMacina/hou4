@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">close</ion-button>
+    </ion-buttons>
+    <ion-title>{{product.pName}}
+      @if (product.boughtAgo) {
+        <ion-note> bought {{product.boughtAgo}} days ago</ion-note> 
+      }
+      
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form  [formGroup]="detailForm" (ngSubmit)="onSubmit()" >
+    <ion-input
+      label="product"
+      labelPlacement="floating"
+      type="text"
+      formControlName="pName"
+      >
+    </ion-input>
+    <ion-input
+    label="buy date"
+    labelPlacement="floating"
+    type="date"
+    formControlName="buyDate"
+   
+  >
+  </ion-input>
+  <ion-input
+  label="expiration"
+  labelPlacement="floating"
+  type="date"
+  formControlName="expDate"
+  
+  >
+</ion-input>
+  <ion-input type="number" label="remaining days:"  [readonly]="true" [value]=" product.daysToExp"></ion-input>
+
+    <ion-button type="submit" expand="block"  shape="round">UPDATE</ion-button>
+  </form> 
+</ion-content>

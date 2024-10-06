@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">close</ion-button>
+    </ion-buttons>
+    <ion-title>add product</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form  [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+    <ion-input
+    label="product name"
+    labelPlacement="floating"
+    type="text"
+    [clearInput]="true"
+    formControlName="pName"  
+    fill="outline"
+    ></ion-input>
+    <ion-input
+    fill="outline"
+    label="purchased"
+    labelPlacement="floating"
+    type="date"
+    [clearInput]="true"
+    formControlName="buyDate"
+    fill="outline"
+    ></ion-input>
+    <ion-input
+    label="expiration"
+    labelPlacement="floating"
+    type="date"
+    [clearInput]="true"
+    formControlName="expDate"
+    fill="outline"
+    ></ion-input>
+    <ion-button type="submit" expand="block"  shape="round">save</ion-button>
+  </form> 
+</ion-content>

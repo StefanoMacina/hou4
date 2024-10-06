@@ -1,0 +1,9 @@
+client/.angular/
+client/node_modules
+client/www
+client/android
+client/ios
+client/src/environments/environment.prod.ts
+server/target
+server/src/main/resources/application-prod.yml
+server/.idea

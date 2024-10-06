@@ -1,0 +1,80 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <ion-input
+      formControlName="username"
+      label="username"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+    <ion-input
+      formControlName="firstname"
+      label="firstname"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+    <ion-input
+      formControlName="lastname"
+      label="lastname"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+    <ion-input
+      formControlName="email"
+      label="email"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+
+    <ion-input
+      label="birthdate"
+      (click)="openDatePicker()"
+      fill="solid"
+      [value]="signupForm.get('birthdate')?.value ? formatDate(signupForm.get('birthdate')?.value) : ''"
+      readonly
+    ></ion-input>
+    <ion-datetime-button
+      datetime="datetime"
+      *ngIf="!signupForm.get('birthdate')?.value"
+    ></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="false" [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-datetime
+          id="datetime"
+          presentation="date"
+          (ionChange)="onDateChange($event)"
+        ></ion-datetime>
+        <ion-button (click)="closeModal()">close</ion-button>
+      </ng-template>
+    </ion-modal>
+
+    <ion-input
+      type="password"
+      formControlName="password"
+      label="password"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+    <ion-input
+      type="password"
+      formControlName="confirmPass"
+      label="confirm password"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Enter text"
+    ></ion-input>
+  
+    <ion-button type="submit" [disabled]="signupForm.invalid">submit</ion-button>
+  </form>
+  or go to <a href="/signin">login</a>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Close</ion-button>
+    </ion-buttons>
+    <ion-title> Recipe generator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>{{ recipe.title }}</h2>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Ingredients</ion-label>
+    </ion-item-divider>
+    
+    <ion-item *ngFor="let ing of recipe.ingredientsList">
+      <ion-label>{{ ing.ing }}</ion-label>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Steps</ion-label>
+    </ion-item-divider>
+    
+    <ion-item *ngFor="let step of recipe.stepsList">
+      <ion-label>{{ step.step }}</ion-label>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Text complete response</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-text>
+        {{ recipe.text }}
+      </ion-text>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

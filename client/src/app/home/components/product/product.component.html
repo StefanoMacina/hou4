@@ -1,0 +1,55 @@
+<ion-item-sliding *ngIf="product" class="ion-activatable ripple-parent">
+  <ion-item class="container">
+    <ion-checkbox 
+      *ngIf="selectable"
+      slot="start"
+      (click)="onSelect(product)">
+    </ion-checkbox>
+
+    <div
+      class="container"
+      (click)="onRequestProductDetail(product.id)"
+      [ngStyle]="{ width: '100%' }">
+      <ion-ripple-effect></ion-ripple-effect>
+
+      <h3>
+
+        <ion-icon 
+          *ngIf="product.daysToExp >= 0 && product.daysToExp < 2" 
+          color="warning" 
+          name="ellipse"
+          size="small">
+        </ion-icon>
+        <ion-icon 
+          *ngIf="product.daysToExp < 0" 
+          color="danger" 
+          name="ellipse"
+          size="small">
+        </ion-icon>
+        {{ product.pName }}
+      </h3>
+      
+      <div slot="end">
+        <ion-note *ngIf="product.daysToExp > 0">
+          {{ product.daysToExp }} days left
+        </ion-note>
+        <ion-note *ngIf="product.daysToExp < 0">
+          expired {{ product.daysToExp * -1 }} days ago
+        </ion-note>
+        <ion-note *ngIf="product.daysToExp == 0">
+          EXPIRE TODAY
+        </ion-note>
+      </div>
+
+      <ion-note *ngIf="!selectable">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-note>
+    </div>
+  </ion-item>
+
+  <ion-item-options *ngIf="!selectable">
+    <ion-item-option color="danger" (click)="onDelete($event, product)">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>

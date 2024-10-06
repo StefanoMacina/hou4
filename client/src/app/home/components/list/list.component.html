@@ -1,0 +1,14 @@
+
+  <ion-list
+    [inset]="inset"
+  >
+    <p-tab *ngFor="let p of products" 
+      [product]="p"
+      (openModalId)="openModal($event)"
+      (checkedProducts)="checkedProduct($event)" 
+      (deleteProduct)="onDelete($event)"
+      [selectable]="selectable"
+      >
+    </p-tab>
+  </ion-list>
+

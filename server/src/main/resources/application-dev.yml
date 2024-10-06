@@ -1,0 +1,24 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: focus-tree-433808-p7
+          location: us-central1
+          chat:
+            options:
+              model: gemini-1.5-flash-001
+              temperature: 0.5
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/hou4db
+    username: dev_user
+    password: dev_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
